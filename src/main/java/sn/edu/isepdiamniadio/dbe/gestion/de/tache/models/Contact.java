@@ -7,11 +7,12 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String nom;
     private String prenom;
     private String email;
     private String telephone;
+    private String priorite;
 
     // Constructeur sans arguments obligatoire pour JPA
     public Contact() {
@@ -26,11 +27,11 @@ public class Contact {
     }
 
     // Getters & Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -64,5 +65,13 @@ public class Contact {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getPriorite() {
+        return priorite;
+    }
+
+    public void setPriorite(String priorite) {
+        this.priorite = priorite;
     }
 }

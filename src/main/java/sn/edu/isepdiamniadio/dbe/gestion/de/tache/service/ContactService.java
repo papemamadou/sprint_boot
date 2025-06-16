@@ -26,7 +26,7 @@ public class ContactService {
 
     // Récupérer un contact par son id
     public Optional<Contact> getContactById(Integer id) {
-        return contactRepository.findById(id);
+        return contactRepository.findById(Long.valueOf(id));
     }
 
     // Créer un nouveau contact
@@ -35,8 +35,8 @@ public class ContactService {
     }
 
     // Mettre à jour un contact existant
-    public Contact updateContact(Integer id, Contact contact) throws Throwable {
-        Contact contactToUpdate = contactRepository.findById(id)
+    public Contact updateContact(Integer id, Contact contact) {
+        Contact contactToUpdate = contactRepository.findById(Long.valueOf(id))
                 .orElseThrow(() -> new RuntimeException("Contact non trouvé avec l'id : " + id));
 
         // Mettre à jour les champs souhaités
@@ -51,9 +51,9 @@ public class ContactService {
 
     // Supprimer un contact par son id
     public void deleteContact(Integer id) {
-        if (!contactRepository.existsById(id)) {
+        if (!contactRepository.existsById(Long.valueOf(id))) {
             throw new RuntimeException("Contact non trouvé avec l'id : " + id);
         }
-        contactRepository.deleteById(id);
+        contactRepository.deleteById(Long.valueOf(id));
     }
 }
